@@ -1,0 +1,22 @@
+{
+  "name": "ourcoolapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape ./front-end/tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facg3/OurCoolApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/facg3/OurCoolApp/issues"
+  },
+  "homepage": "https://github.com/facg3/OurCoolApp#readme",
+  "dependencies": {
+    "tape": "^4.8.0"
+  }
+}

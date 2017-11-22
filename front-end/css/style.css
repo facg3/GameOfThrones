@@ -41,8 +41,9 @@ header {
 }
 
 .bottom-part{
-  height: 100vh;
-  width:100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 2vh 2vh 2vh 2vh;
   background-color:#8b979b;
   color:white;
 }
@@ -59,16 +60,14 @@ header {
 }
 .details{
   display: flex;
-  height: 100vh;
-  margin: 40px;
-  margin-top: 5px;
+  justify-content: space-around;
   overflow: hidden;
 }
 
 .actors{
-  height: 100vh;
-  padding:40px;
   display: flex;
+  justify-content: space-between;
+  align-items: space-between;
   flex-wrap:wrap;
   overflow: hidden;
   background-color:#516369;
@@ -87,28 +86,20 @@ header {
   padding-bottom: 25px;
 }
 
-.person{
-  margin-left: 40px;
-  margin-top: 40px;
-}
-
-img{
-  border-radius: 3px;
-  border-color: #f7f7f7;
-  opacity : 0.5;
-}
 
 img.per{
-  margin-right: 25px;
-  margin-top: 40px;
+  display: flex;
   border-radius: 10px;
   border-color: #f7f7f7;
   height: 300px;
   width: 300px;
-  opacity : 1;
+
+}
+
+.person {
   display: flex;
-  flex-wrap:wrap;
-  overflow: hidden;
+  align-items: center;
+  justify-content: center;
 }
 
 img.per:hover{
@@ -117,15 +108,8 @@ img.per:hover{
 .bio{
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
-    background-color: white;
+    padding-left: 2vh;
     color:black;
-    margin-top: 80px;
-    margin-left: 40px;
-    padding: 20px;
-    width:auto;
-    height: 400px;
-    overflow: hidden;
 }
 
 

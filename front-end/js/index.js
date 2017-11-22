@@ -7,9 +7,7 @@ var gotFunctions = {
           if(xhr.status === 200) {
             callback(null,JSON.parse(xhr.responseText));
           } else {
-
-            var errorMessage = xhr.responseText;
-            callback("Error " + url + " " + errorMessage);
+            callback("Error " + url + " " + xhr.responseText);
           }
         }
       };

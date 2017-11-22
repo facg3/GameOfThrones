@@ -1,54 +1,56 @@
+(()=>{
 var gotFunctions = {
 // Marwa:
-  fetch: (function(url, callback){
+  fetch: function(url, callback){
     var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4){
-          if(xhr.status === 200) {
-            callback(null,JSON.parse(xhr.responseText));
-          } else {
-
-            var errorMessage = xhr.responseText;
-            callback("Error " + url + " " + errorMessage);
-          }
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4){
+        if(xhr.status == 200){
+          callback(null, JSON.parse(xhr.responseText));
+        } else {
+          callback("Error!! "+url+xhr.responseText);
         }
-      };
-      xhr.open("GET", url, true);
-      xhr.send();
-})(),
+      }
+    }
+    xhr.open("GET", url, true);
+    xhr.send();
+},
 
 // Sultan
-  getResponse: (function(url, callback){
-    // fetch(url, (err, result)=>{
-    //   if(err){
-    //     alert(err);
-    //   } else {
-    //     callback(result);
-    //   }
-  })(),
+  getResponse: function(url, callback){
+    gotFunctions.fetch(url, (error, response)=>{
+      if(error){
+        console.log(error);
+      } else {
+        callback(response);
+      }
+    })
+  },
 
 // Ismail
-  getPovCharacters: (function(response){
+  getPovCharacters: function(response){
     // povCharacters from each book , return an array contains all urls
     // don't repeat urls
-  })(),
+  },
 
 // Yasmin
-  makePovArray: (function(array){
+  makePovArray: function(array){
 // name, tv series, playedBy ... objects inside array ... return array of objects.
-  })(),
+  },
 
 // Sultan
-  getCharacterDetails: (function(array){
+  getCharacterDetails: function(array){
 // span value
-  })(),
+  },
 };
 
-var api1 = "https://anapioficeandfire.com/api/books"
-var api2 = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + ""
-// getResponse(api1, getPovCharacters)
 
+var api1 = "https://anapioficeandfire.com/api/books"
+var api2 = "http://www.theimdbapi.org/api/find/person?name=" + ""
+
+gotFunctions.getResponse(api1, gotFunctions.getPovCharacters);
 
 if (typeof module !== 'undefined') {
   module.exports = gotFunctions;
 }
+})();

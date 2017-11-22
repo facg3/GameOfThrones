@@ -32,11 +32,11 @@ var gotFunctions = {
   getPovCharacters: function(objectOfBooks){
     // povCharacters from each book , return an array contains all urls
     // don't repeat urls
-    objectOfBooks = ["https://anapioficeandfire.com/api/characters/148",
-    "https://anapioficeandfire.com/api/characters/148",
-    "https://anapioficeandfire.com/api/characters/148",
-    "https://anapioficeandfire.com/api/characters/148"]
-    return objectOfBooks;
+    var result = [];
+    objectOfBooks.povCharacters.forEach(function(item){
+      result.push(item);
+    })
+    return result;
   },
 
 // Yasmin

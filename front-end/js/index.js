@@ -26,42 +26,43 @@ function makeCharArray(charDetails){
 }
 
 function createDetailsNode(charDetailsArray, realName){
-  // charDetailsArray.forEach(function(name){
-  //   console.log(name.name);
-  //   if(realName===name.name){
-  //     var nameIndex = charDetailsArray.indexOf(name.name);
-  //   })
-    var detailsContainer = document.querySelector(".bottom-part");
-    var mainDiv = document.createElement("div");
-    mainDiv.className = "details";
-    var personDiv = document.createElement("div");
-    personDiv.className = "person";
-    var bioDiv = document.createElement("div");
-    bioDiv.className = "bio";
-    var personImg = document.createElement("img");
-    personImg.className = "per";
-    personImg.src = charDetailsArray[nameIndex].image;
-    personImg.alt =  "An image of: " + charDetailsArray[nameIndex].name;
-    var personName = document.createElement("h2");
-    personName.innerText = charDetailsArray[nameIndex].name;
-    var personBD = document.createElement("h4");
-    personBD.innerText = charDetailsArray[nameIndex].birthdate;
-    var personBP = document.createElement("h4");
-    personBP.innerText = charDetailsArray[nameIndex].birthplace;
-    var personBio = document.createElement("p");
-    personBio.innerText = charDetailsArray[nameIndex].bio;
-    bioDiv.appendChild(personName);
-    bioDiv.appendChild(personBD);
-    bioDiv.appendChild(personBP);
-    bioDiv.appendChild(personBio);
-    personDiv.appendChild(personImg);
-    mainDiv.appendChild(personDiv);
-    mainDiv.appendChild(bioDiv);
-    detailsContainer.appendChild(mainDiv);
+  charDetailsArray.forEach(function(element){
+      if(realName===element.name){
+        var nameIndex = charDetailsArray.indexOf(element);
+        var detailsContainer = document.querySelector(".bottom-part");
+        detailsContainer.innerHTML = "";
+        var mainDiv = document.createElement("div");
+        mainDiv.className = "details";
+        var personDiv = document.createElement("div");
+        personDiv.className = "person";
+        var bioDiv = document.createElement("div");
+        bioDiv.className = "bio";
+        var personImg = document.createElement("img");
+        personImg.className = "per";
+        personImg.src = charDetailsArray[nameIndex].image;
+        personImg.alt =  "An image of: " + charDetailsArray[nameIndex].name;
+        var personName = document.createElement("h2");
+        personName.innerText = charDetailsArray[nameIndex].name;
+        var personBD = document.createElement("h4");
+        personBD.innerText = charDetailsArray[nameIndex].birthdate;
+        var personBP = document.createElement("h4");
+        personBP.innerText = charDetailsArray[nameIndex].birthplace;
+        var personBio = document.createElement("p");
+        personBio.innerText = charDetailsArray[nameIndex].bio;
+        bioDiv.appendChild(personName);
+        bioDiv.appendChild(personBD);
+        bioDiv.appendChild(personBP);
+        bioDiv.appendChild(personBio);
+        personDiv.appendChild(personImg);
+        mainDiv.appendChild(personDiv);
+        mainDiv.appendChild(bioDiv);
+        detailsContainer.appendChild(mainDiv);
+      }
+  })
 }
 
 var gotFunctions = {
-// Marwa:
+  // Marwa:
   fetch: function(url, callback){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
@@ -76,9 +77,9 @@ var gotFunctions = {
 
     xhr.open("GET", url, true);
     xhr.send();
-},
+  },
 
-// Sultan
+  // Sultan
   getResponse: function(url, callback){
     gotFunctions.fetch(url, (error, response)=>{
       if(error){
@@ -89,7 +90,7 @@ var gotFunctions = {
     })
   },
 
-// Ismail
+  // Ismail
   getPovCharacters: function(objectOfBooks){
     // povCharacters from each book , return an array contains all urls
     // don't repeat urls
@@ -100,9 +101,9 @@ var gotFunctions = {
     });
   },
 
-// Yasmin
+  // Yasmin
   makePovArray: function(urlObject){
-// name, tv series, playedBy ... objects inside array ... return array of objects.
+    // name, tv series, playedBy ... objects inside array ... return array of objects.
     if(urlObject.playedBy[0]){
       var char = {
         name: urlObject.name,
@@ -113,9 +114,9 @@ var gotFunctions = {
     }
   },
 
-// Sultan
+  // Sultan
   getCharacterDetails: function(charObject){
-// span value
+    // span value
     if(charObject){
       var charDetails = {
         name: charObject[0].title,
@@ -126,43 +127,32 @@ var gotFunctions = {
       };
       makeCharArray(charDetails);
     }
-  },
+    },
 };
 
 
 var api1 = "https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api/books/8";
-
-
 var charDetailsArray = [];
 
-
-
-if (typeof module !== 'undefined') {
-  module.exports = gotFunctions;
+if (document.addEventListener){
+    document.addEventListener('click',yourHandler,false);
 }
-
-if (document.addEventListener) {
-    document.addEventListener("click", handleClick, false);
-} else if (document.attachEvent) {
-    document.attachEvent("onclick", handleClick);
+else{
+    document.attachEvent('onclick',yourHandler);//for IE
 }
-
-function handleClick(event) {
-    event = event || window.event;
-    event.target = event.target || event.srcElement;
-    var element = event.target;
-    while (element) {
-        if (element.nodeName === "BUTTON" && /b/.test(element.className)) {
-            // The user clicked on a <button> or clicked on an element inside a <button>
-            // with a class name called "foo"
-            createDetailsNode(charDetailsArray, element.parentNode.querySelector(".real-name").innerText);
-            break;
-        }
+function yourHandler(e){
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    if (target.className==="b")
+    {
+      createDetailsNode(charDetailsArray, target.parentNode.querySelector(".real-name").innerText);
     }
 }
-
-// console.log(document.querySelector(".b").parentNode.querySelector(".real-name").innerText);
 
 document.querySelector(".button").addEventListener('click', function(){
   gotFunctions.getResponse(api1, gotFunctions.getPovCharacters);
 })
+
+if (typeof module !== 'undefined') {
+  module.exports = gotFunctions;
+}

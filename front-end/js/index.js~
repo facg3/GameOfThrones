@@ -3,19 +3,19 @@ var gotFunctions = {
   fetch: (function(url, callback){
     var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4){
-          if(xhr.status === 200) {
-            callback(null,JSON.parse(xhr.responseText));
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            cb(null, xhr.responseText);
           } else {
-
+            // if the API returns an error, pass the error into the callback as the first argument
             var errorMessage = xhr.responseText;
-            callback("Error " + url + " " + errorMessage);
+            cb("Error " + url + " " + errorMessage);
           }
         }
       };
       xhr.open("GET", url, true);
       xhr.send();
-})(),
+    }
+  })(),
 
 // Sultan
   getResponse: (function(url, callback){

@@ -1,0 +1,34 @@
+body{
+  width: 100%;
+  font-family: sans-serif;
+}
+header{
+  width:100%;
+  display: block;
+
+}
+.top-part{
+  width:100%;
+  background-color:#0b1d29;
+  color:white;
+}
+.actor{
+  width:100%;
+}
+
+.bottom-part{
+  width:100%;
+  background-color:#0f615d;
+  color:white;
+}
+img{
+
+  border-radius: 3px;
+  border-color: #8392ba;
+}
+
+
+@media only screen and (max-width: 700px) {
+header{
+    width: 100%;
+  }

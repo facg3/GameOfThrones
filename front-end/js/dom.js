@@ -1,9 +1,11 @@
 (function(){
-
   // ismail
-  function displayPovArray(array){
-
+  function displayPovArray(){
+    var actorList = document.querySelectorAll(".actor1");
+    
   }
+
+
 
   // yasmin
   function displayCharacterDetails(object){
@@ -17,4 +19,4 @@
   //   gotFunctions.getResponse(api2, gotFunctions.getCharacterDetails);
   // });
 
-})
+})();

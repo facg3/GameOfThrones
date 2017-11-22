@@ -41,29 +41,37 @@ var gotFunctions = {
 
 // Yasmin
   makePovArray: function(urlObject){
-    console.log(urlObject);
 // name, tv series, playedBy ... objects inside array ... return array of objects.
-    var arrayOfCharacters = [];
-    arrayOfCharacters.push({name: urlObject.name, playedBy: urlObject.playedBy[0]})
-    console.log(arrayOfCharacters);
+    var char = {
+      name: urlObject.name,
+      playedBy: urlObject.playedBy[0]
+    }
+    arrayOfCharacters.push(char);
     return arrayOfCharacters;
   },
 
 // Sultan
-  getCharacterDetails: function(spanValue){
+  getCharacterDetails: function(charObject){
 // span value
+    return {
+      name: charObject[0].title,
+      birthdate: charObject[0].birthday,
+      birthplace: charObject[0].birthplace,
+      bio: charObject[0].description,
+      image: charObject[0].image.thumb
+    };
   },
 };
 
 
-var api1 = "https://anapioficeandfire.com/api/books"
-var api2 = "http://www.theimdbapi.org/api/find/person?name=" + ""
+var api1 = "https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api/books/8";
 
 gotFunctions.getResponse(api1, gotFunctions.getPovCharacters);
 var result = gotFunctions.getPovCharacters();
+var arrayOfCharacters = [];
 
 result.forEach(function(url){
-  url="https://cors-anywhere.herokuapp.com/"+url
+ url="https://cors-anywhere.herokuapp.com/"+url;
  let x = gotFunctions.getResponse(url, gotFunctions.makePovArray);
 })
 

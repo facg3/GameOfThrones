@@ -1,4 +1,3 @@
-(()=>{
 var gotFunctions = {
 // Marwa:
   fetch: function(url, callback){
@@ -34,9 +33,9 @@ var gotFunctions = {
     // don't repeat urls
     var result = [];
     objectOfBooks.povCharacters.forEach(function(item){
-      result.push(item);
-    })
-    return result;
+      result.push("https://cors-anywhere.herokuapp.com/"+item);
+      gotFunctions.getResponse("https://cors-anywhere.herokuapp.com/"+item, gotFunctions.makePovArray);
+    });
   },
 
 // Yasmin
@@ -46,36 +45,39 @@ var gotFunctions = {
       name: urlObject.name,
       playedBy: urlObject.playedBy[0]
     }
-    arrayOfCharacters.push(char);
-    return arrayOfCharacters;
+    if(char.playedBy){
+      displayPovArray(char);
+      gotFunctions.getResponse("http://www.theimdbapi.org/api/find/person?name="+char.playedBy, gotFunctions.getCharacterDetails);
+    }
   },
 
 // Sultan
   getCharacterDetails: function(charObject){
 // span value
-    return {
-      name: charObject[0].title,
-      birthdate: charObject[0].birthday,
-      birthplace: charObject[0].birthplace,
-      bio: charObject[0].description,
-      image: charObject[0].image.thumb
-    };
+    if(charObject){
+      var charDetails = {
+        name: charObject[0].title,
+        birthdate: charObject[0].birthday,
+        birthplace: charObject[0].birthplace,
+        bio: charObject[0].description,
+        image: charObject[0].image.thumb
+      };
+    }
   },
 };
 
 
 var api1 = "https://cors-anywhere.herokuapp.com/https://anapioficeandfire.com/api/books/8";
 
-gotFunctions.getResponse(api1, gotFunctions.getPovCharacters);
-var result = gotFunctions.getPovCharacters();
-var arrayOfCharacters = [];
 
-result.forEach(function(url){
- url="https://cors-anywhere.herokuapp.com/"+url;
- let x = gotFunctions.getResponse(url, gotFunctions.makePovArray);
-})
+var arrayOfCharacters = [];
 
 if (typeof module !== 'undefined') {
   module.exports = gotFunctions;
 }
-})();
+
+
+
+document.querySelector(".button").addEventListener('click', function(){
+  gotFunctions.getResponse(api1, gotFunctions.getPovCharacters);
+})

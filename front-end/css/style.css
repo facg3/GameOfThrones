@@ -2,18 +2,20 @@ body{
   width: 100%;
   font-family: sans-serif;
   margin: 0px;
-
 }
+
 header {
   width:100%;
   display: block;
 }
+
  .button{
   position:absolute;
   top:90%;;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .button {
   display: inline-block;
   padding: 15px 25px;
@@ -27,7 +29,6 @@ header {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-
 }
 
 .button:hover {
@@ -37,7 +38,6 @@ header {
 .button:active {
   background-color:#b7b7b7;
   box-shadow: 0 4px #666;
-
 }
 
 .bottom-part{
@@ -45,7 +45,15 @@ header {
   width:100%;
   background-color:#8b979b;
   color:white;
-
+}
+.b{
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: black;
 
 
 }
@@ -53,9 +61,10 @@ header {
   display: flex;
   height: 100vh;
   margin: 40px;
-  flex-wrap:wrap;
+  margin-top: 5px;
   overflow: hidden;
 }
+
 .actors{
   height: 100vh;
   padding:40px;
@@ -64,6 +73,7 @@ header {
   overflow: hidden;
   background-color:#516369;
 }
+
 .actor1 {
   width: 200px;
   height: 200px;
@@ -74,33 +84,50 @@ header {
   float: left;
   background-color: white;
   color:black;
+  padding-bottom: 25px;
 }
+
+.person{
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
 img{
   border-radius: 3px;
   border-color: #f7f7f7;
   opacity : 0.5;
 }
+
 img.per{
+  margin-right: 25px;
   margin-top: 40px;
   border-radius: 10px;
   border-color: #f7f7f7;
   height: 300px;
   width: 300px;
   opacity : 1;
+  display: flex;
+  flex-wrap:wrap;
+  overflow: hidden;
 }
+
 img.per:hover{
   opacity :0.5 ;
 }
 .bio{
-background-color: white;
-color:black;
-margin: 60px;
-padding: 20px;
-height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: white;
+    color:black;
+    margin-top: 80px;
+    margin-left: 40px;
+    padding: 20px;
+    width:auto;
+    height: 400px;
+    overflow: hidden;
 }
-h1.bio{
-  background-color: #516369;
-}
+
 
 .foot{
    height: 30px;
@@ -110,6 +137,7 @@ h1.bio{
    color: black;
    text-align: center;
  }
+
 @media only screen and (max-width: 700px) {
 header{
     width: 100%;

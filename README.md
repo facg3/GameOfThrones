@@ -8,6 +8,6 @@
 ```
 git clone https://github.com/facg3/OurCoolApp.git
 ```
-
+Our GitHub Pages :(https://facg3.github.io/OurCoolApp/.)
 ## By:
 ### YMIS Team

@@ -6,7 +6,7 @@
 ## How to clone it?
 ### in your terminal, for Lunix:
 ```
-https://github.com/facg3/OurCoolApp.git
+git clone https://github.com/facg3/OurCoolApp.git
 ```
 
 ## By:

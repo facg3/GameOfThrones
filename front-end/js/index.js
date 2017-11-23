@@ -92,18 +92,16 @@ var gotFunctions = {
 
   // Ismail
   getPovCharacters: function(objectOfBooks){
-    // povCharacters from each book , return an array contains all urls
-    // don't repeat urls
     var result = [];
     objectOfBooks.povCharacters.forEach(function(item){
       result.push("https://cors-anywhere.herokuapp.com/"+item);
-      gotFunctions.getResponse("https://cors-anywhere.herokuapp.com/"+item, gotFunctions.makePovArray);
+      gotFunctions.getResponse("https://cors-anywhere.herokuapp.com/"+item, gotFunctions.makePovObj);
     });
+    return result;
   },
 
   // Yasmin
-  makePovArray: function(urlObject){
-    // name, tv series, playedBy ... objects inside array ... return array of objects.
+  makePovObj: function(urlObject){
     if(urlObject.playedBy[0]){
       var char = {
         name: urlObject.name,
@@ -111,12 +109,12 @@ var gotFunctions = {
       }
       createCharNode(char);
       gotFunctions.getResponse("http://www.theimdbapi.org/api/find/person?name="+char.playedBy, gotFunctions.getCharacterDetails);
+      return char;
     }
   },
 
   // Sultan
   getCharacterDetails: function(charObject){
-    // span value
     if(charObject){
       var charDetails = {
         name: charObject[0].title,
@@ -126,6 +124,7 @@ var gotFunctions = {
         image: charObject[0].image.thumb
       };
       makeCharArray(charDetails);
+      return charDetails;
     }
     },
 };
@@ -138,7 +137,7 @@ if (document.addEventListener){
     document.addEventListener('click',yourHandler,false);
 }
 else{
-    document.attachEvent('onclick',yourHandler);//for IE
+    document.attachEvent('onclick',yourHandler);
 }
 function yourHandler(e){
     e = e || window.event;
@@ -154,5 +153,6 @@ document.querySelector(".button").addEventListener('click', function(){
 })
 
 if (typeof module !== 'undefined') {
-  module.exports = gotFunctions;
+  // module.exports = gotFunctions
+  //module.exports = makeCharArray
 }

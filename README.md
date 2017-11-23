@@ -26,7 +26,7 @@ Our project this week is to build a simple web app about the Game of Throne seri
 In your terminal, for Lunix:
 
 git clone https://github.com/facg3/OurCoolApp.git
-Our GitHub Pages :(https://facg3.github.io/OurCoolApp/.)
+Our GitHub Pages :[github pages](https://facg3.github.io/OurCoolApp/.)
  
  ## About our team work ..
 

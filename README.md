@@ -36,7 +36,7 @@ Our GitHub Pages :[github pages](https://facg3.github.io/OurCoolApp/.)
   Marwa and Ismail work in html and css
   then we swap and made a test
 
- We have considered in our code to be ##Responsive and ###Accessibile.
+ We have considered in our code to be ## Responsive and ## Accessibile.
 
  ## ENJOY :) 
 

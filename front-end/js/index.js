@@ -12,11 +12,13 @@ function createCharNode(char){
   spanNode2.className = "real-name";
   buttonNode.innerText = "Details";
   buttonNode.className = "b";
+  aNode.href = "#h";
+  aNode.appendChild(buttonNode);
   divNode.appendChild(spanNode1);
   divNode.appendChild(document.createElement("br"));
   divNode.appendChild(spanNode2);
   divNode.appendChild(document.createElement("br"));
-  divNode.appendChild(buttonNode);
+  divNode.appendChild(aNode);
   actorsContainer.appendChild(divNode);
 };
 
@@ -144,7 +146,7 @@ function yourHandler(e){
     var target = e.target || e.srcElement;
     if (target.className==="b")
     {
-      createDetailsNode(charDetailsArray, target.parentNode.querySelector(".real-name").innerText);
+      createDetailsNode(charDetailsArray, target.parentNode.parentNode.querySelector(".real-name").innerText);
     }
 }
 

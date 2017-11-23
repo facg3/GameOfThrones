@@ -38,6 +38,6 @@ Our GitHub Pages :(https://facg3.github.io/OurCoolApp/.)
 
  We have considered in our code to be  ###responsive and ###Accessibility
 
- ##ENJOY :) 
+ ## ENJOY :) 
 
 
